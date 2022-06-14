@@ -1,18 +1,10 @@
 <?php
-for ($i = 0; $i < 5; $i++) {
-    if ($i == 0) {
-        echo '////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\' . PHP_EOL;
-    }
-    if ($i == 1) {
-        echo '////////////********\\\\\\\\\\\\\\\\\\\\\\' . PHP_EOL;
-    }
-    if ($i == 2) {
-        echo '////////****************\\\\\\\\\\\\\\\\' . PHP_EOL;
-    }
-    if ($i == 3) {
-        echo '////************************\\\\\\\\' . PHP_EOL;
-    }
-    if ($i == 4) {
-        echo '********************************' . PHP_EOL;
-    }
+$height = (int)readline ('Insert height: ');
+$width = ($height - 1) * 8;
+
+for ($i = 0; $i < $height; $i++) {
+    echo str_repeat('/', $width / 2 - $i * 4);
+    echo str_repeat('*', $i * 8);
+    echo str_repeat('\\', $width / 2 - $i * 4);
+    echo PHP_EOL;
 }
