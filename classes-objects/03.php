@@ -7,18 +7,18 @@ class FuelGauge
     {
     $this->liters = $liters;
     }
-    public function fuelGauge(int $l)
+    public function fuelGauge(int $l): void
     {
         if ($l <= 70)
             $this->liters = $l;
         else
             $this->liters = 70;
     }
-    public function getLiters()
+    public function getLiters(): int
     {
         return $this->liters;
     }
-    public function incrementLiters()
+    public function incrementLiters(): void
     {
         if ($this->liters < 70) {
             $this->liters++;
@@ -31,34 +31,35 @@ class FuelGauge
     }
 };
 
-class Odometer extends FuelGauge
+class Odometer
 {
-    public int $mileage;
-    public int $setPoint;
-
+    /** @var FuelGauge*/
+    private int $mileage;
+    private int $setPoint;
+    private int $l;
+    private int $falseMileage;
     public function __construct(int $mileage, int $fuelGauge)
     {
         $this->mileage = $mileage;
         $this->setPoint = $mileage;
-        $this->fuelGauge = $fuelGauge;
+        $this->l = $fuelGauge;
     }
 
-    public function getMileage()
+    public function getMileage(): int
     {
         return $this->mileage;
     }
 
-    public function incrementLiters()
+    public function incrementMiles(): void
     {
         if ($this->mileage < 999999) {
             $this->mileage++;
         } else {
             $this->mileage = 0;
         }
-        $this->mileage = $this->mileage + 1000000;
-        if (($this->mileage - $this->setPoint) >= 10) {
-            $this->fuelGauge = $fuelGauge->liters--;
-            $this->setPoint = $this->mileage;
+        $falseMileage = $this->mileage + 1000000;
+        if (($falseMileage - $this->setPoint) >= 10) {
+            FuelGauge::$liters--;
         }
     }
     public function main()
