@@ -20,14 +20,10 @@ class Account
     {
         return $this->balance = $this->balance + $deposit;
     }
-    public function transfer(Account $from, Account $to, float $howMuch): float
+    public function transfer(Account $to, float $howMuch): void
     {
-        if ($from->getName() !== $to->getName()) {
-            return $to->balance = $to->balance + $howMuch;
-        }
-        if ($this->getName() === $from->getName()){
-            return $this->balance = $this->balance - $howMuch;
-        }
+        $to->balance += $howMuch;
+        $this->balance -= $howMuch;
     }
     public function balance(): float
     {
@@ -50,6 +46,13 @@ echo "Final state" . PHP_EOL;
 echo $bartosAccount->getName() . " ". $bartosAccount->balance() . PHP_EOL;
 echo $bartosSwissAccount->getName() .  " ". $bartosSwissAccount->balance() . PHP_EOL;
 
+echo PHP_EOL;
+
+$newAccount = new Account("New account", 100.00);
+$newAccount->deposit(20.00);
+echo $newAccount->getName() . " " . $newAccount->balance() . PHP_EOL;
+
+echo PHP_EOL;
 
 $mattsAccount = new Account("Matt's account", 1000);
 $myAccount = new Account("My account", 0);
@@ -58,20 +61,14 @@ $myAccount->deposit(100);
 echo $mattsAccount->getName() . " ". $mattsAccount->balance() . PHP_EOL;
 echo $myAccount->getName() .  " ". $myAccount->balance() . PHP_EOL;
 
+echo PHP_EOL;
+
 $A = new Account("A", 100.00);
 $B = new Account("B", 0.00);
 $C = new Account("C", 0.00);
-var_dump($A->balance());
-var_dump($B->balance());
-var_dump($C->balance());
-$A->transfer($A, $B, 50.00);
-var_dump($A->balance());
-var_dump($B->balance());
-var_dump($C->balance());
-$B->transfer($B, $C, 25.00);
-var_dump($A->balance());
-var_dump($B->balance());
-var_dump($C->balance());
+
+$A->transfer($B, 50.00);
+$B->transfer($C, 25.00);
 
 echo $A->getName() . " " . $A->balance() . PHP_EOL;
 echo $B->getName() . " " . $B->balance() . PHP_EOL;
