@@ -11,31 +11,31 @@ class Date
         $this->month = $month;
         $this->year = $year;
     }
-    public function setDay(string $newDay)
+    public function setDay(string $newDay): string
     {
-        $this->day = $newDay;
+       return $this->day = $newDay;
     }
-    public function setMonth(string $newMonth)
+    public function setMonth(string $newMonth): string
     {
-        $this->month = $newMonth;
+        return $this->month = $newMonth;
     }
-    public function setYear(string $newYear)
+    public function setYear(string $newYear): string
     {
-        $this->year = $newYear;
+        return $this->year = $newYear;
     }
-    public function getDay()
+    public function getDay(): string
     {
         return $this->day;
     }
-    public function getMonth()
+    public function getMonth(): string
     {
        return $this->month;
     }
-    public function getYear()
+    public function getYear(): string
     {
        return $this->year;
     }
-    public function DisplayDate()
+    public function DisplayDate(): void
     {
         echo $this->day . "/" . $this->month . "/" . $this->year . PHP_EOL;
     }

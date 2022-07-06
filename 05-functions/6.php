@@ -1,5 +1,5 @@
 <?php
-$array = [2, 5, 10, 10.13, 'kaka'];
+$array = [2, 5, 10, 10.13, 'vārds'];
 function arrayDouble(int $number): int
 {
     return $number * 2;

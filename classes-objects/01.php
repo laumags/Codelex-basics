@@ -11,7 +11,7 @@ class Product
         $this->price = $price;
         $this->amount = $amount;
     }
-    public function printProduct()
+    public function printProduct(): void
     {
         echo $this->name . ", " . "price " . $this->price . ", " . "amount " . $this->amount . PHP_EOL;
     }
