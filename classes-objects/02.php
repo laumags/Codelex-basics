@@ -9,7 +9,7 @@ class Point
         $this->x = $x;
         $this->y = $y;
     }
-    public function swapPoints($p1, $p2)
+    public function swapPoints($p1, $p2): void
     {
         $temp = $p1->x;
         $temp2 = $p1->y;
